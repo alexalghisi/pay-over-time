@@ -37,7 +37,7 @@ def _amortised(principal: Decimal, apr: Decimal, term: int) -> list[tuple[Decima
 
 
 def build_schedule(
-    principal: Decimal, apr: Decimal, term: int, first_due: date
+    principal: Decimal, apr: Decimal, term: int, start: date
 ) -> list[ScheduledInstallment]:
     if principal <= 0 or principal != to_cents(principal):
         raise ValueError("Principal must be a positive amount in whole cents")
@@ -49,7 +49,7 @@ def build_schedule(
     return [
         ScheduledInstallment(
             sequence=index + 1,
-            due_date=add_months(first_due, index),
+            due_date=add_months(start, index + 1),
             amount=principal_part + interest,
             principal=principal_part,
             interest=interest,
