@@ -1,0 +1,193 @@
+:root {
+    --ink: #101828;
+    --muted: #5d6779;
+    --line: #e3e7ee;
+    --brand: #4a4af4;
+    --brand-soft: #eef0ff;
+    --danger: #b42318;
+    --radius: 14px;
+    font-family: "Inter", "Segoe UI", system-ui, sans-serif;
+    color: var(--ink);
+    background: #f6f7fb;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+}
+
+main {
+    max-width: 640px;
+    margin: 0 auto;
+    padding: 32px 16px 64px;
+}
+
+header h1 {
+    margin: 0 0 4px;
+    font-size: 28px;
+}
+
+header p {
+    margin: 0 0 24px;
+    color: var(--muted);
+}
+
+.card {
+    background: #fff;
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    padding: 24px;
+    box-shadow: 0 8px 24px rgb(16 24 40 / 6%);
+}
+
+.controls {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 12px;
+}
+
+.controls label {
+    display: grid;
+    gap: 6px;
+    font-weight: 600;
+    font-size: 14px;
+}
+
+select,
+input {
+    font: inherit;
+    padding: 10px 12px;
+    border: 1px solid var(--line);
+    border-radius: 10px;
+}
+
+.hint {
+    color: var(--muted);
+    font-size: 13px;
+}
+
+.hint--invalid,
+.error {
+    color: var(--danger);
+}
+
+.offers {
+    border: 0;
+    margin: 16px 0;
+    padding: 0;
+    display: grid;
+    gap: 10px;
+}
+
+.offers legend {
+    font-weight: 700;
+    margin-bottom: 8px;
+}
+
+.offer {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    grid-template-areas:
+        "radio payment apr"
+        "radio term total";
+    align-items: center;
+    column-gap: 12px;
+    padding: 14px 16px;
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    cursor: pointer;
+}
+
+.offer--selected {
+    border-color: var(--brand);
+    background: var(--brand-soft);
+}
+
+.offer input {
+    grid-area: radio;
+}
+
+.offer__payment {
+    grid-area: payment;
+    font-size: 20px;
+    font-weight: 700;
+}
+
+.offer__payment small {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--muted);
+}
+
+.offer__term {
+    grid-area: term;
+    color: var(--muted);
+}
+
+.offer__apr {
+    grid-area: apr;
+    font-weight: 600;
+    text-align: right;
+}
+
+.offer__total {
+    grid-area: total;
+    color: var(--muted);
+    text-align: right;
+    font-size: 13px;
+}
+
+.schedule {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 8px 0 20px;
+    font-size: 14px;
+}
+
+.schedule caption {
+    text-align: left;
+    font-weight: 600;
+    padding-bottom: 8px;
+}
+
+.schedule th,
+.schedule td {
+    text-align: left;
+    padding: 8px 4px;
+    border-bottom: 1px solid var(--line);
+}
+
+.schedule td:last-child,
+.schedule th:last-child {
+    text-align: right;
+}
+
+button {
+    width: 100%;
+    font: inherit;
+    font-weight: 700;
+    padding: 14px;
+    border: 0;
+    border-radius: 12px;
+    color: #fff;
+    background: var(--brand);
+    cursor: pointer;
+}
+
+button:disabled {
+    opacity: 0.6;
+    cursor: progress;
+}
+
+.confirmation h2 {
+    margin-top: 0;
+}
+
+@media (min-width: 560px) {
+    .controls {
+        grid-template-columns: 1fr 1fr;
+    }
+}
