@@ -4,7 +4,6 @@ from dataclasses import dataclass
 from datetime import date
 from decimal import Decimal
 
-from paylater.domain.calendar import add_months
 from paylater.domain.errors import AmountOutOfRange, UnsupportedTerm
 from paylater.domain.markets import Market
 from paylater.domain.schedule import ScheduledInstallment, build_schedule
@@ -28,7 +27,7 @@ def build_offer(market: Market, amount: Decimal, term: int, start: date) -> Offe
     apr = market.apr_by_term.get(term)
     if apr is None:
         raise UnsupportedTerm(f"{market.code} does not offer a {term}-month plan")
-    schedule = build_schedule(amount, apr, term, add_months(start, 1))
+    schedule = build_schedule(amount, apr, term, start)
     total_interest = sum((row.interest for row in schedule), Decimal("0.00"))
     return Offer(
         term=term,
